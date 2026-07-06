@@ -2,8 +2,12 @@ name: Check Amul Stock
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    # Offset from :00/:05 to avoid GitHub's peak load drops at the top of each hour.
+    - cron: "2,7,12,17,22,27,32,37,42,47,52,57 * * * *"
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   check-stock:
